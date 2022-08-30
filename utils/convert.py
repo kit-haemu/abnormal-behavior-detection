@@ -53,6 +53,36 @@ def save_fps(filepath):
     video.release()
 
 
+def mov_img(path):
+    print(path)
+    tree = ET.parse(path)
+    root = tree.getroot()
+
+    for object in root.findall("object"):
+        for action in object.findall("action"):
+            img = glob.glob(path[:-4] + '/*.jpg')
+            for frame in action.findall("frame"):
+                start = int(frame.find("start").text) - 1
+                end = int(frame.find("end").text) - 1
+                for i in img:
+                    dir_path = i[:-4].split('/')[-2]
+                    try:
+                        if not os.path.exists('./fight/' + dir_path):
+                            print(f"make dir: './fight/'{dir_path}")
+                            os.makedirs('./fight/' + dir_path)
+                    except OSError:
+                        print('Error: Creating directory. ' + dir_path)
+
+                    if start <= int(i.split('/')[-1].split('.')[0]) <= end:
+                        if os.path.exists('./fight/' + dir_path + '/' + i.split('/')[-1]):
+                            continue
+
+                        shutil.move(i, './fight/' + dir_path)
+
+    if os.path.exists(path[:-4]):
+        shutil.move(path[:-4], './normal/')
+
+
 def save_npy(source, destination, file_name, IMG_SIZE, INTERVAL):
     base = tf.keras.applications.MobileNetV3Small(input_shape=(IMG_SIZE, IMG_SIZE, 3), weights='imagenet',
                                                   include_top=False)
