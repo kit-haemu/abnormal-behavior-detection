@@ -1,5 +1,7 @@
 import argparse
-from utils.FeatureConverter import convert
+import glob
+
+from utils.convert import save_npy
 
 
 parser = argparse.ArgumentParser(description="Converting image to features and features to npy")
@@ -18,4 +20,5 @@ filename = args.filename
 IMG_SIZE = args.img_size
 INTERVAL = args.interval
 
-convert(source, destination, filename, IMG_SIZE, INTERVAL)
+
+save_npy(source, destination, filename, IMG_SIZE, INTERVAL)

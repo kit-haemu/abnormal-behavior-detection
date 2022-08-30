@@ -1,6 +1,9 @@
 import cv2
 import os
 
+import glob
+import xml.etree.ElementTree as ET
+import shutil
 import numpy as np
 from numpy import prod
 import tensorflow as tf
@@ -15,7 +18,8 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  # Arrange GPU devices starting fro
 os.environ["CUDA_VISIBLE_DEVICES"]= "3"  # Set the GPU 2 to use
 
 
-def convert(source, destination, file_name, IMG_SIZE, INTERVAL):
+
+def save_npy(source, destination, file_name, IMG_SIZE, INTERVAL):
     base = tf.keras.applications.MobileNetV3Small(input_shape=(IMG_SIZE, IMG_SIZE, 3), weights='imagenet',
                                                   include_top=False)
     # features = np.empty((0, 28224))
