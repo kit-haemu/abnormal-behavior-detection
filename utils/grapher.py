@@ -16,4 +16,4 @@ def draw(history):
     plt.plot(history.history['val_accuracy'], label='test')
     plt.xlabel("epoch")
     plt.ylabel('accuracy')
-    plt.legend();
+    plt.legend()
