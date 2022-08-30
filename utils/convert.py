@@ -18,6 +18,40 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  # Arrange GPU devices starting fro
 os.environ["CUDA_VISIBLE_DEVICES"]= "3"  # Set the GPU 2 to use
 
 
+def save_fps(filepath):
+    video = cv2.VideoCapture(filepath)
+
+    length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+    width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps = video.get(cv2.CAP_PROP_FPS)
+    if not video.isOpened():
+        print("Could not Open :", filepath)
+        exit(0)
+    try:
+        if not os.path.exists(filepath[:-4]):
+            print(f"make dir: {filepath[:-4]}")
+            os.makedirs(filepath[:-4])
+        else:
+            print(f"exist dir: {filepath[:-4]}")
+    except OSError:
+        print('Error: Creating directory. ' + filepath[:-4])
+
+    count = 0
+
+    while (video.isOpened()):
+
+        ret, image = video.read()
+        if not ret:
+            break
+        if os.path.exists(filepath[:-4] + f"/{count}.jpg"):
+            count += 1
+            continue
+        cv2.imwrite(filepath[:-4] + f"/{count}.jpg", image)
+        count += 1
+
+    video.release()
+
 
 def save_npy(source, destination, file_name, IMG_SIZE, INTERVAL):
     base = tf.keras.applications.MobileNetV3Small(input_shape=(IMG_SIZE, IMG_SIZE, 3), weights='imagenet',
