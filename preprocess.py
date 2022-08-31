@@ -1,5 +1,6 @@
 import argparse
 import glob
+import os 
 
 from utils.convert import save_npy, save_fps, mov_img
 
@@ -28,12 +29,12 @@ IMG_SIZE = args.img_size
 INTERVAL = args.interval
 
 # 비디오를 프레임별 이미지로 분할
-mov = glob.glob(dataset)
+mov = glob.glob(os.path.join(dataset,'**/*.mp4'), recursive=True))
 for m in mov:
     save_fps(m)
 
 # xml파일에 따른 label 정리
-mov = glob.glob(label)
+mov = glob.glob(os.path.join(label,'**/*.xml'), recursive=True))
 for m in mov:
     mov_img(m)
 
