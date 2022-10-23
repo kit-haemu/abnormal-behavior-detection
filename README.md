@@ -10,8 +10,8 @@
     </th>
     <tr>
         <td colspan=2>
-            <li><a src="https://www.dbpia.co.kr/journal/voisDetail?voisId=VOIS00692420">DB pia - 한국정보기술학회 2022년도 하계종합학술대회 및 대학생논문경진대회</a></li>
-            <li><a src="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11082631">DB pia - GRU 기반 행동 분석 모델을 이용한 어린이 이상 행동 검출 시스템</a></li>
+            <li><a href="https://www.dbpia.co.kr/journal/voisDetail?voisId=VOIS00692420">DB pia - 한국정보기술학회 2022년도 하계종합학술대회 및 대학생논문경진대회</a></li>
+            <li><a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11082631">DB pia - GRU 기반 행동 분석 모델을 이용한 어린이 이상 행동 검출 시스템</a></li>
         </td>
     </tr>
 </table>
