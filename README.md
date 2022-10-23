@@ -3,12 +3,10 @@
 ## Information
 <table>
     <th>
-        <td>
-            <img src="https://www.dbpia.co.kr/img_cover/is_Cover/is_532218b.jpg" width=400px>
-        </td>
-        <td>
-            <img src="./static/2022-kiit-bestaward.png" width=400px>
-        </td>
+        <img src="https://www.dbpia.co.kr/img_cover/is_Cover/is_532218b.jpg" width=400px>
+    </th>
+    <th>
+        <img src="./static/2022-kiit-bestaward.png" width=400px>
     </th>
     <tr>
         <td colspan=2>
